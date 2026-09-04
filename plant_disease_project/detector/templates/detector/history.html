@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload History 🌿</title>
+    <link rel="stylesheet" href="{% static 'css/history.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- 🌿 Navbar -->
+    <nav class="navbar">
+        <div class="logo">🌱 Plant Disease Detector</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'upload' %}">Upload</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'history' %}" class="active">History</a></li>
+        </ul>
+    </nav>
+
+    <!-- 🧾 History Section -->
+    <section class="history-section">
+        <h1>Your Upload History 📜</h1>
+        <p>View your previously analyzed leaf images and predictions below.</p>
+
+        {% if history %}
+        <div class="history-grid">
+            {% for record in history %}
+            <div class="history-card">
+                <div class="img-wrapper">
+                    <img src="{{ record.image_url }}" alt="Uploaded Leaf">
+                </div>
+                <div class="info">
+                    <h3>{{ record.prediction }}</h3>
+                    <p>Confidence: {{ record.confidence|floatformat:2 }}%</p>
+                    <p class="time"><i class="far fa-clock"></i> {{ record.timestamp }}</p>
+                </div>
+                <div class="actions">
+                    <a href="{% url 'result_view' record.id %}" class="btn">🔍 View Result</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="no-history">No uploads yet. Try uploading a leaf image!</p>
+        {% endif %}
+    </section>
+
+    <script src="{% static 'js/history.js' %}"></script>
+</body>
+</html>

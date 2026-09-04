@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Leaf Image 🌿</title>
+    <link rel="stylesheet" href="{% static 'css/upload.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- 🌿 Navbar -->
+    <nav class="navbar">
+        <div class="logo">🌱 Plant Disease Detector</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'upload' %}" class="active">Upload</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'history' %}">History</a></li>
+            <li><a href="{% url 'prevention_guide' %}">Prevention Guide</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- 🌿 Upload Section -->
+    <section class="upload-section">
+        <div class="upload-container">
+            <h2>📸 Upload a Plant Leaf Image</h2>
+            <p>Supported formats: JPG, PNG | Max size: 5MB</p>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="upload-box" id="uploadBox">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & Drop your image here or click to browse</p>
+                    <input type="file" name="image" id="imageInput" accept="image/*" required hidden>
+                </div>
+                <div id="preview" class="preview hidden">
+                    <h3>Preview:</h3>
+                    <img id="previewImage" src="#" alt="Preview">
+                </div>
+                <button type="submit" class="btn">🔍 Predict Disease</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="{% static 'js/upload.js' %}"></script>
+</body>
+</html>

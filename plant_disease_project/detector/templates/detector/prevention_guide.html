@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🌿 Plant Disease Prevention Guide</title>
+    <link rel="stylesheet" href="{% static 'css/prevention_guide.css' %}">
+</head>
+<body>
+
+<!-- ✅ Navbar (Same as Home Page) -->
+<nav class="navbar">
+    <div class="logo">🌱 Plant Disease Detection</div>
+    <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'upload' %}">Upload</a></li>
+        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li><a href="{% url 'history' %}">History</a></li>
+        <li><a href="{% url 'prevention_guide' %}" class="active">Prevention Guide</a></li>
+    </ul>
+</nav>
+
+<!-- 🌿 Page Header -->
+<header class="page-header">
+    <h1>🌿 Plant Disease Prevention Guide</h1>
+    <p>Learn how to protect your plants from common diseases — simple tips for healthy growth.</p>
+</header>
+
+<!-- 🌾 Plant Selector -->
+<section class="plant-selector">
+    <h2>Select a Plant</h2>
+    <div class="plant-list">
+        {% for plant, _ in plant_preventions.items %}
+            <button onclick="showPlant('{{ plant }}')">{{ plant }}</button>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- 🌱 Prevention Info -->
+<section class="plant-section">
+    {% for plant, diseases in plant_preventions.items %}
+    <div id="{{ plant }}" class="plant-info hidden">
+        <h2 class="plant-name">{{ plant }}</h2>
+        <hr>
+        {% for disease, info in diseases.items %}
+        <div class="disease-block">
+            <h3>{{ disease }}</h3>
+            <p><b>Description:</b> {{ info.description }}</p>
+            <p><b>Cause:</b> {{ info.cause }}</p>
+            <p><b>Prevention:</b> {{ info.prevention }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</section>
+
+<!-- 🌿 Footer -->
+<footer class="footer">
+    <p>🌱 Plant Disease Detector © 2025 | Built with ❤️ using Django & PyTorch</p>
+    <p>Developed by <strong>Pranathi Bingimalla</strong></p>
+</footer>
+
+<script src="{% static 'js/prevention_guide.js' %}"></script>
+</body>
+</html>

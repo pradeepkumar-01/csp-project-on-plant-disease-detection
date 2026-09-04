@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Layout & Leaf Focus 🌿</title>
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- 🌿 Navbar -->
+    <nav class="navbar">
+        <div class="logo">🌱 Plant Disease Detector</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            <li><a href="{% url 'history' %}">History</a></li>
+            <li><a href="{% url 'layout' %}" class="active">Model Layout</a></li>
+        </ul>
+    </nav>
+
+    <!-- 🧠 Model Layout Section -->
+    <section class="layout-section">
+        <h1>Model Interpretation</h1>
+        <p>Here’s how our AI model analyzed your plant leaf and highlighted the key regions that influenced its prediction.</p>
+
+        <div class="layout-container">
+            <!-- Left: Model Structure -->
+            <div class="model-structure">
+                <h2>Model Architecture</h2>
+                <ul>
+                    <li><strong>Input Layer:</strong> Leaf image (RGB, 224×224)</li>
+                    <li><strong>Convolutional Layers:</strong> Extract textures and leaf spots</li>
+                    <li><strong>Pooling Layers:</strong> Reduce spatial size</li>
+                    <li><strong>Residual Connections:</strong> Preserve feature details</li>
+                    <li><strong>Fully Connected Layers:</strong> Classify plant type and disease</li>
+                    <li><strong>Output Layer:</strong> 38 plant–disease classes</li>
+                </ul>
+
+                <div class="model-illustration">
+                    <img src="{% static 'detector/images/model_layout.png' %}" alt="Model Architecture">
+                </div>
+            </div>
+
+            <!-- Right: Focus Visualization -->
+            <div class="heatmap-visual">
+                <h2>Focused Region (Grad-CAM)</h2>
+                <div class="image-comparison">
+                    <div class="image-stack">
+                        <!-- Dynamic images from view -->
+                        <img id="leaf-img" src="{{ image_url }}" alt="Original Leaf" class="leaf-image">
+                        <img id="heatmap-img" src="{{ heatmap_url }}" alt="Heatmap Overlay" class="heatmap-image">
+                    </div>
+                    <button id="toggle-heatmap" class="btn">👁️ Toggle Heatmap</button>
+                </div>
+                <p class="caption">Red areas indicate the regions most influential in prediction.</p>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="{% url 'upload' %}" class="btn secondary">⬅ Back to Upload</a>
+            <a href="{% url 'upload' %}" class="btn">🔁 Try Another Image</a>
+        </div>
+    </section>
+
+    <script>
+        // Toggle heatmap overlay
+        const toggleBtn = document.getElementById('toggle-heatmap');
+        const heatmapImg = document.getElementById('heatmap-img');
+        toggleBtn.addEventListener('click', () => {
+            if (heatmapImg.style.display === 'none' || !heatmapImg.style.display) {
+                heatmapImg.style.display = 'block';
+            } else {
+                heatmapImg.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+/* 🌿 General */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9fdf9;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2d6a4f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #b7e4c7;
+}
+
+/* 🧠 Layout Section */
+.layout-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.layout-section h1 {
+    color: #388E3C;
+}
+
+.layout-section p {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* 🌿 Layout Container */
+.layout-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* 🪴 Model Structure */
+.model-structure {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: left;
+}
+
+.model-structure ul {
+    padding-left: 15px;
+}
+
+.model-structure li {
+    margin: 8px 0;
+}
+
+/* Model illustration */
+.model-illustration {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.model-illustration img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* 🌿 Heatmap Section */
+.heatmap-visual {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 450px;
+}
+
+.image-comparison {
+    position: relative;
+}
+
+.image-stack {
+    position: relative;
+    display: inline-block;
+}
+
+.image-stack img {
+    width: 100%;
+    border-radius: 12px;
+    transition: opacity 0.6s ease;
+}
+
+.heatmap-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.6;
+}
+
+.caption {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 8px;
+}
+
+/* 🌿 Buttons */
+.btn {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #43A047;
+}
+
+.btn.secondary {
+    background: #81C784;
+}
+
+.btn.secondary:hover {
+    background: #66BB6A;
+}
+
+.image-stack {
+  position: relative;
+  width: 350px;
+  margin: auto;
+}
+
+.leaf-image,
+.heatmap-image {
+  width: 100%;
+  border-radius: 10px;
+  transition: opacity 0.5s ease;
+}
+
+.heatmap-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.6;
+}
+

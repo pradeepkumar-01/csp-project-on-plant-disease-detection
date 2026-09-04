@@ -1,0 +1,178 @@
+/* ===============================
+   🌿 HISTORY PAGE STYLING
+   =============================== */
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9fdf9;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2d6a4f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover{
+    color: #b7e4c7;
+}
+
+/* ===== History Section ===== */
+.history-section {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.history-section h1 {
+    color: #2e7d32;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.history-section p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* ===== Grid Layout ===== */
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* ===== History Card ===== */
+.history-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.history-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.history-card:hover img {
+    transform: scale(1.05);
+}
+
+.info {
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+.info h3 {
+    color: #2e7d32;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+}
+
+.info p {
+    margin: 0.2rem 0;
+    font-size: 0.75rem;
+}
+
+.info .time {
+    color: #777;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+/* ===== Actions ===== */
+.actions {
+    padding: 0.8rem 1rem;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.actions .btn {
+    display: inline-block;
+    background-color: #43a047;
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.actions .btn:hover {
+    background-color: #2e7d32;
+}
+
+/* ===== No History Message ===== */
+.no-history {
+    font-size: 1.2rem;
+    color: #777;
+    margin-top: 2rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .history-section h1 {
+        font-size: 1.6rem;
+    }
+
+    .info h3 {
+        font-size: 1.1rem;
+    }
+}

@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌿 Global Dashboard</title>
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- 🌿 Navbar -->
+  <nav class="navbar">
+    <div class="logo">🌱 Plant Disease Detector</div>
+    <ul class="nav-links">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'upload' %}">Upload</a></li>
+    </ul>
+  </nav>
+
+  <!-- 📊 Dashboard -->
+  <section class="dashboard">
+    <h1>🌿 Global Dashboard</h1>
+    <p>Overall statistics and predictions from all users.</p>
+
+    <!-- 🌱 Stats Overview -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <h2>{{ total_uploads }}</h2>
+        <p>Total Uploads</p>
+      </div>
+      <div class="stat-card">
+        <h2>{{ total_diseases }}</h2>
+        <p>Detected Diseases</p>
+      </div>
+      <div class="stat-card">
+        <h2>{{ avg_confidence|floatformat:2 }}%</h2>
+        <p>Average Confidence</p>
+      </div>
+      <div class="stat-card">
+        <h2>{{ most_common_disease }}</h2>
+        <p>Most Common Disease</p>
+      </div>
+    </div>
+
+    <!-- 📊 Charts -->
+    <div class="charts-container">
+      <div class="chart-box">
+        <h3>Disease Distribution</h3>
+        <canvas id="diseaseChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Confidence Distribution</h3>
+        <canvas id="confidenceChart"></canvas>
+      </div>
+    </div>
+
+    <!-- 🖼 Recent Uploads -->
+    <div class="recent-uploads">
+      <h3>Recent Uploads</h3>
+      <div class="upload-grid">
+        {% for record in recent_uploads %}
+        <div class="upload-card">
+          <img src="{{ record.image.url }}" alt="Leaf Image">
+          <p><strong>{{ record.predicted_label }}</strong></p>
+          <span>{{ record.created_at|date:"M d, Y H:i" }}</span>
+        </div>
+        {% empty %}
+        <p>No uploads yet.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- JS data injection -->
+  {{ disease_data|json_script:"disease-data" }}
+{{ confidence_data|json_script:"confidence-data" }}
+
+<script>
+  const diseaseData = JSON.parse(document.getElementById('disease-data').textContent);
+  const confidenceData = JSON.parse(document.getElementById('confidence-data').textContent);
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

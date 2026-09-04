@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Result 🌿</title>
+    <link rel="stylesheet" href="{% static 'css/result.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- 🌿 Navbar -->
+    <nav class="navbar">
+        <div class="logo">🌱 Plant Disease Detector</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'upload' %}">Upload</a></li>
+            <li><a href="{% url 'history' %}">History</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'layout' %}">Layout</a></li>
+            <li><a href="{% url 'prevention_guide' %}">Prevention Guide</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- 🌿 Result Section -->
+    <section class="result-container">
+        <div class="card">
+            <h1>Detection Result 🌾</h1>
+
+            <!-- Uploaded Image -->
+            <div class="image-box">
+                <img src="{{ image_url }}" alt="Uploaded Leaf" class="uploaded-image">
+            </div>
+
+            <!-- Prediction Details -->
+            <div class="result-details">
+                <h2>{{ plant_name }}</h2>
+                <p><strong>Disease:</strong> {{ predicted_class }}</p>
+                <p><strong>Confidence:</strong> {{ confidence|floatformat:2 }}%</p>
+
+                {% if "healthy" in predicted_class|lower %}
+                    <p class="healthy">✅ Your plant seems healthy!</p>
+                {% else %}
+                    <p class="diseased">⚠️ Your plant may have <strong>{{ predicted_class }}</strong>. Please take preventive action.</p>
+                {% endif %}
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <a href="{% url 'upload' %}" class="btn">🔁 Detect Another</a>
+                <a href="{% url 'home' %}" class="btn secondary">🏡 Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'js/result.js' %}"></script>
+</body>
+</html>

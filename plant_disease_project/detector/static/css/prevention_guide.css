@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9fdf9;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2d6a4f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #b7e4c7;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #b7e4c2;
+}
+.page-header h1 {
+    margin-bottom: 0.5rem;
+    color: #1b4332;
+}
+.page-header p {
+    color: #2d6a4f;
+    font-size: 1rem;
+}
+
+/* Plant Selector */
+.plant-selector {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+.plant-selector h2 {
+    margin-bottom: 1rem;
+    color: #28431b;
+}
+.plant-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+}
+.plant-list button {
+    background-color: #1b4332;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.plant-list button:hover {
+    background-color: #40916c;
+}
+
+/* Plant Info Section */
+.plant-section {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+.plant-info {
+    background: #ffffff;
+    border-left: 6px solid #52b788;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+.plant-name {
+    color: #1b4332;
+    margin-bottom: 1rem;
+}
+.disease-block {
+    margin-bottom: 1.2rem;
+}
+.disease-block h3 {
+    color: #2d6a4f;
+    margin-bottom: 0.4rem;
+}
+.hidden {
+    display: none;
+}
+
+/* Footer */
+.footer {
+    background-color: #2d6a4f;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;             /* Reduce padding */
+    border-top: 4px solid #40916c;
+    border-radius: 12px 12px 0 0;
+    margin-top: auto;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    min-height: 50px;               /* Dynamic height (no fixed height) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

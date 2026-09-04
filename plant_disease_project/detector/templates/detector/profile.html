@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile </title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!--  Navbar -->
+    <nav class="navbar">
+        <div class="logo">🌱 Plant Disease Detector</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'upload' %}">Upload</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'history' %}">History</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+
+<!-- 🌿 Profile Header -->
+<section class="profile-header">
+    <div class="profile-pic">
+        {% if profile.profile_pic %}
+            <img src="{{ profile.profile_pic.url }}" alt="Profile Picture">
+        {% else %}
+            <img src="{% static 'images/profile.jpeg' %}" alt="Default Profile">
+        {% endif %}
+    </div>
+
+    <div class="profile-info">
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ profile.phone_number|default:"—" }}</p>
+        <p><strong>Member Since:</strong> {{ user.date_joined|date:"F j, Y" }}</p>
+        <a href="{% url 'edit_profile' %}" class="edit-btn">Edit Profile</a>
+    </div>
+</section>
+
+
+    <!-- 🌿 User Stats Section -->
+    <section class="user-stats">
+        <h2>Your Activity Summary</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-image"></i>
+                <h3>{{ total_uploads }}</h3>
+                <p>Total Uploads</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-seedling"></i>
+                <h3>{{ most_common_label }}</h3>
+                <p>Most Detected Disease</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <h3>{{ last_upload|date:"M d, Y" }}</h3>
+                <p>Last Upload</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌿 Bio Section -->
+    <section class="bio-section">
+        <h2>About You</h2>
+        {% if user.userprofile.bio %}
+            <p>{{ user.userprofile.bio }}</p>
+        {% else %}
+            <p class="empty-bio">You haven’t added a bio yet. <a href="{% url 'edit_profile' %}">Add one now →</a></p>
+        {% endif %}
+    </section>
+
+    
+
+</body>
+</html>

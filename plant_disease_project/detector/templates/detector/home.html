@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detector 🌿</title>
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- 🌿 Navbar -->
+    <nav class="navbar">
+        <div class="logo">🌱 Plant Disease Detector</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'upload' %}">Upload</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        </ul>
+    </nav>
+
+    <!-- 🌿 Hero Image -->
+    <section class="hero">
+        <img src="{% static 'images/plant_banner.png' %}" alt="Plants Banner">
+    </section>
+
+    <!-- 🌿 Plant Selector Bar -->
+    <section class="plant-bar">
+        <h2>Plants our model supports</h2>
+        <div id="plant-list" class="plant-scroll"></div>
+    </section>
+
+    <!-- 🌿 Info Display -->
+    <section id="plant-info" class="plant-info hidden"></section>
+
+    <!-- 🌿 Footer -->
+    <footer class="footer">
+        <p>🌱 Plant Disease Detector © 2025 | Built with ❤️ using Django & PyTorch</p>
+        <p>Developed by <strong>Pranathi Bingimalla</strong></p>
+    </footer>
+
+    <!-- 🌿 JS -->
+    <script src="{% static 'js/home.js' %}" defer></script>
+</body>
+</html>

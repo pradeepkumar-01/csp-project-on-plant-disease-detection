@@ -1,0 +1,133 @@
+/* 🌿 General Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9fdf9;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2d6a4f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #b7e4c7;
+}
+
+/* 🌿 Result Card */
+.result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.card h1 {
+    color: #388E3C;
+}
+
+.image-box {
+    margin: 20px 0;
+}
+
+.image-box img {
+    max-width: 100%;
+    border-radius: 10px;
+    border: 3px solid #81C784;
+}
+
+.result-details {
+    margin-top: 20px;
+}
+
+.result-details h2 {
+    color: #2e7d32;
+}
+
+.result-details p {
+    font-size: 1rem;
+    margin: 8px 0;
+}
+
+/* 🌿 Conditional Styles */
+.healthy {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.diseased {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* 🌿 Buttons */
+.actions {
+    margin-top: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 5px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #43A047;
+}
+
+.btn.secondary {
+    background: #81C784;
+}
+
+.btn.secondary:hover {
+    background: #66BB6A;
+}
+
+/* 🌿 Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
