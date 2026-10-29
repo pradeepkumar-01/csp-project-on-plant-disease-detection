@@ -104,5 +104,5 @@ csp-project-on-plant-disease-detection/
 ---
 
 ## 👥 Author
-- **Manideep Bingimalla**
-- GitHub: [@MANIDEEP-24091a05cg](https://github.com/MANIDEEP-24091a05cg)
+- **Konka Pradeep Kumar**
+- GitHub: [@pradeepkumar-01](https://github.com/pradeepkumar-01)
